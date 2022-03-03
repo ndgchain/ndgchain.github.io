@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>链游之家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background-color: #4cc7ab;">
+    <div id="hedadr" style="background-color: #4ccaaa;">
+        <img src="image/logo1.png">
+        <ul style="color: white;">链游之家</ul>
+        <p>当前版本:3.2.3 大小41MB</p>
+        <dd><button style="background-color: white;" onclick="downapp();">点击下载</button></dd>
+    </div>
+    <div class="wxtips"><img src="image/live_weixin.png" /></div>
+
+    <div class="title" style="color: white;">链游打金</div>
+    <div class="show">
+        <div class="pic" style="display: flex;">
+            <div style="justify-content: center;align-items: center">
+                <p><b>盒子</b></p>
+                <img src="image/1.png">
+            </div>
+            <div style="justify-content: center;align-items: center">
+                <p><b>资产</b></p>
+                <img src="image/2.png">
+            </div>
+            <div style="justify-content: center;align-items: center">
+                <p><b>打金</b></p>
+                <img src="image/3.png">
+            </div>
+            <div style="justify-content: center;align-items: center">
+                <p><b>打金</b></p>
+                <img src="image/4.png">
+            </div>
+            <div style="justify-content: center;align-items: center">
+                <p><b>交易</b></p>
+                <img src="image/5.png">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/current.min.js"></script>
+    <script type="text/javascript">
+
+        var ios_url = "";        
+        var android_url = "http://haowanhuaijiudownload.kumili.net/lianyouzhijia-android-3.2.3.apk";
+        
+        var protocolStr = document.location.protocol;
+
+        window.onload = function () {
+            var code = getParams("code");
+            if (code != null) {
+                $("#hedadr").append('<dd style="padding-top: 0px;"><button style="border: solid 1px red; color:red;" onclick="copyText(' + code + ');">邀请码:' + code + '</button></dd>')
+            }
+        }
+        function downapp() {
+            var sys = systemInfo();
+            if (sys == "wechat") {
+                $(".wxtips").css("display", "flex");
+                return
+            }
+            if (sys == "apple") {
+                window.location.href = ios_url;
+                return
+            }
+            if (protocolStr == "https:") {
+                android_url = android_url.replace("http://", "https://");
+            }
+            window.location.href = android_url;
+            return
+        }
+    </script>
+</body>
+
+</html>
